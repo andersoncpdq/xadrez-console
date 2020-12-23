@@ -9,19 +9,11 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
-            try
-            {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+            PosicaoXadrez pos = new PosicaoXadrez('c', 7);
 
-                tab.ColocarPeca(new Torre(Cor.Amarela, tab), new Posicao(0, 0));
-                tab.ColocarPeca(new Rei(Cor.Amarela, tab), new Posicao(1, 3));
+            Console.WriteLine(pos.ToString());
 
-                Tela.ImprimirTabuleiro(tab);
-            }
-            catch (TabuleiroException e)
-            {
-                Console.WriteLine("Erro: " + e.Message);
-            }
+            Console.WriteLine(pos.ToPosicao());
         }
     }
 }
