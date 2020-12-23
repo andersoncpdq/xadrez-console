@@ -1,6 +1,7 @@
 ﻿using System;
 using tabuleiro;
 using xadrez;
+using Exceptions;
 
 namespace xadrez_console
 {
@@ -8,13 +9,19 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
-            Tabuleiro tab = new Tabuleiro(8, 8);
+            try
+            {
+                Tabuleiro tab = new Tabuleiro(8, 8);
 
-            tab.ColocarPeca(new Torre(Cor.Amarela, tab), new Posicao(0, 0));
-            tab.ColocarPeca(new Torre(Cor.Amarela, tab), new Posicao(1, 3));
-            tab.ColocarPeca(new Rei(Cor.Amarela, tab), new Posicao(3, 5));
+                tab.ColocarPeca(new Torre(Cor.Amarela, tab), new Posicao(0, 0));
+                tab.ColocarPeca(new Rei(Cor.Amarela, tab), new Posicao(1, 3));
 
-            Tela.ImprimirTabuleiro(tab);
+                Tela.ImprimirTabuleiro(tab);
+            }
+            catch (TabuleiroException e)
+            {
+                Console.WriteLine("Erro: " + e.Message);
+            }
         }
     }
 }
